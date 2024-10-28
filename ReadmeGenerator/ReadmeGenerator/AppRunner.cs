@@ -21,7 +21,7 @@ public class AppRunner(
     CrawlerService crawler,
     ILogger<AppRunner> logger) {
     public async Task<Result> RunAsync() {
-        Directory.SetCurrentDirectory(settings.WorkingDirectory);
+        Utility.SetWorkingDirectory(settings.WorkingDirectory);
         
         // Use the Gravatar image as default user profile
         foreach (var user in settings.Users.Where(user => string.IsNullOrEmpty(user.AvatarUrl))) {
