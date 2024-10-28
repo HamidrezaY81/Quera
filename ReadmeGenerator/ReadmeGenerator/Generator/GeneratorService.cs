@@ -1,15 +1,12 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using OnRail;
 using OnRail.Extensions.OnFail;
 using OnRail.Extensions.OnSuccess;
 using OnRail.Extensions.Try;
-using Quera.Collector.Models;
-using Quera.Configs;
+using ReadmeGenerator.Collector.Models;
+using ReadmeGenerator.Settings;
 
-namespace Quera.Generator;
+namespace ReadmeGenerator.Generator;
 
 public class GeneratorService(AppSettings settings) {
     public Result<StringBuilder> GenerateReadmeSection(List<Problem> problems, int? limit = null) =>

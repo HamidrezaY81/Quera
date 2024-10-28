@@ -1,23 +1,20 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 using OnRail.Extensions.OnFail;
 using OnRail.Extensions.Try;
-using Quera.Collector.Models;
-using Quera.Configs;
-using Serilog;
+using ReadmeGenerator.Collector.Models;
+using ReadmeGenerator.Settings;
 
-namespace Quera.Crawler;
+namespace ReadmeGenerator.Crawler;
 
-public class CrawlerService(AppSettings settings) {
+public class CrawlerService(AppSettings settings, ILogger<CrawlerService> logger) {
     public async IAsyncEnumerable<Problem> CompleteProblemTitlesAsync(IEnumerable<Problem> problems) {
         var problemsWithoutTitle = problems
             .Where(problem => problem.QueraTitle is null).ToList();
-        Log.Information("{Count} problems have not title.", problemsWithoutTitle.Count);
+        logger.LogInformation("{Count} problems have not title.", problemsWithoutTitle.Count);
 
         foreach (var problem in problemsWithoutTitle) {
-            Log.Information("Title for {QueraId} is not cached. Try to download it.", problem.QueraId);
+            logger.LogInformation("Title for {QueraId} is not cached. Try to download it.", problem.QueraId);
 
             var requestResult = await TryExtensions.Try(() =>
                     GetProblemTitleAsync(problem.QueraId.ToString()), settings.NumberOfTry
@@ -28,7 +25,7 @@ public class CrawlerService(AppSettings settings) {
 
             yield return problem;
 
-            Log.Information("Delay {delay}", settings.DelayToRequestQueraInMilliSeconds);
+            logger.LogInformation("Delay {delay}", settings.DelayToRequestQueraInMilliSeconds);
             await Task.Delay(settings.DelayToRequestQueraInMilliSeconds);
         }
     }

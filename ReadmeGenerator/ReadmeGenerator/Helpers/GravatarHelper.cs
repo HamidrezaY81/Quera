@@ -1,9 +1,7 @@
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Quera.Helpers;
+namespace ReadmeGenerator.Helpers;
 
 public static class GravatarHelper {
     private const string GravatarBaseUrl = "https://www.gravatar.com/avatar/";

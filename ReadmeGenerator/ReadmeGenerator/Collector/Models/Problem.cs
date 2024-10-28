@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-namespace Quera.Collector.Models;
+namespace ReadmeGenerator.Collector.Models;
 
 public class Problem {
     public long QueraId { get; init; }

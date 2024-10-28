@@ -1,4 +1,4 @@
-namespace Quera.Cache;
+namespace ReadmeGenerator.Cache;
 
 public class CacheProblem {
     public string Id { get; set; } = default!;

@@ -1,6 +1,4 @@
-using System;
-
-namespace Quera.Collector.Models;
+namespace ReadmeGenerator.Collector.Models;
 
 public class Contributor {
     public Contributor(string name, string email, int numOfCommits) {

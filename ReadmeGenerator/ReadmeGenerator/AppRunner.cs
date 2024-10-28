@@ -1,44 +1,45 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using OnRail;
 using OnRail.Extensions.Map;
 using OnRail.Extensions.OnSuccess;
 using OnRail.ResultDetails.Errors;
-using Quera.Cache;
-using Quera.Collector;
-using Quera.Collector.Models;
-using Quera.Configs;
-using Quera.Crawler;
-using Quera.Generator;
-using Quera.Helpers;
-using Serilog;
+using ReadmeGenerator.Cache;
+using ReadmeGenerator.Collector;
+using ReadmeGenerator.Collector.Models;
+using ReadmeGenerator.Crawler;
+using ReadmeGenerator.Generator;
+using ReadmeGenerator.Helpers;
+using ReadmeGenerator.Settings;
 
-namespace Quera;
+namespace ReadmeGenerator;
 
 public class AppRunner(
     AppSettings settings,
     CollectorService collector,
     GeneratorService generator,
     CacheRepository cacheRepository,
-    CrawlerService crawler
-) {
+    CrawlerService crawler,
+    ILogger<AppRunner> logger) {
     public async Task<Result> RunAsync() {
+        // Use the Gravatar image as default user profile
+        foreach (var user in settings.Users.Where(user => string.IsNullOrEmpty(user.AvatarUrl))) {
+            user.AvatarUrl = await GravatarHelper.GetGravatarUrlAsync(user.Email!);
+        }
+        
         if (!EnsureInputsAreValid(out var validationResult))
             return validationResult;
-        Log.Debug("App setting values checked.");
+        logger.LogDebug("App setting values checked.");
 
         // Collect problems and solutions
         var problemsResult = await collector.CollectProblemsFromDiskAsync();
         if (!problemsResult.IsSuccess)
             return problemsResult.Map();
         if (problemsResult.Value is null) {
-            Log.Warning("No problem and solution found!");
+            logger.LogWarning("No problem and solution found!");
             return Result.Ok();
         }
 
-        Log.Information("{Count} problems collected from disk.", problemsResult.Value.Count);
+        logger.LogInformation("{Count} problems collected from disk.", problemsResult.Value.Count);
 
         // Crawl new problems
         await foreach (var newProblem in crawler.CompleteProblemTitlesAsync(problemsResult.Value)) {
@@ -46,7 +47,7 @@ public class AppRunner(
                 Id = newProblem.QueraId.ToString(),
                 Title = newProblem.QueraTitle!
             });
-            Log.Debug("{QueraId} cached.", newProblem.QueraId);
+            logger.LogDebug("{QueraId} cached.", newProblem.QueraId);
         }
 
         // Order problems

@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using OnRail;
 using OnRail.Extensions.Try;
-using Quera.Collector.Models;
+using ReadmeGenerator.Collector.Models;
 
-namespace Quera.Cache;
+namespace ReadmeGenerator.Cache;
 
 public class CacheRepository(CacheDbContext db) {
     public Result<List<Problem>> Join(List<Problem?> problems) =>

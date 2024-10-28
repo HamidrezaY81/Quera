@@ -1,12 +1,10 @@
-using System.Threading.Tasks;
+using System.Diagnostics;
 using OnRail;
 using OnRail.Extensions.OnFail;
 using OnRail.Extensions.Try;
 using OnRail.ResultDetails;
 
-namespace Quera.Helpers;
-
-using System.Diagnostics;
+namespace ReadmeGenerator.Helpers;
 
 public static class BashExecutor {
     public static Task<Result<string>> RunCommandAsync(string command, string? workingDirectory = null) =>

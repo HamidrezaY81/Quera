@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Quera.Cache;
+namespace ReadmeGenerator.Cache;
 
 public class CacheDbContext(DbContextOptions options) : DbContext(options) {
     public DbSet<CacheProblem> Problems { get; set; }

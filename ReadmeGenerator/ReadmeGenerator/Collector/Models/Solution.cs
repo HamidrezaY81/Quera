@@ -1,6 +1,4 @@
-using System;
-
-namespace Quera.Collector.Models;
+namespace ReadmeGenerator.Collector.Models;
 
 public class Solution {
     private string _languageName = null!;

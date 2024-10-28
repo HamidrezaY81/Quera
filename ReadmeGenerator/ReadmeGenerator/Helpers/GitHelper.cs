@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using OnRail;
 using OnRail.Extensions.OnFail;
 using OnRail.Extensions.OnSuccess;
 using OnRail.Extensions.Try;
-using Quera.Collector.Models;
+using ReadmeGenerator.Collector.Models;
 
-namespace Quera.Helpers;
+namespace ReadmeGenerator.Helpers;
 
 public static class GitHelper {
     public static Task<Result<string>> MakeDirectorySafe(string path, string? workingDirectory = null) =>

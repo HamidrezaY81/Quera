@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Quera.Configs;
+namespace ReadmeGenerator.Settings;
 
 public class AppSettings {
     public int DelayToRequestQueraInMilliSeconds { get; set; }
@@ -18,7 +16,6 @@ public class AppSettings {
     public string SolutionsPath { get; set; } = default!;
 
     public List<UserModel> Users { get; init; } = [];
-    public string CacheFilePath { get; set; } = default!;
     public string LogLevel { get; set; } = default!;
     public int MainPageLimit { get; set; }
     public string? MainPageFooter { get; set; }

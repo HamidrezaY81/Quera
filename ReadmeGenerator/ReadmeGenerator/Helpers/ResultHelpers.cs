@@ -2,7 +2,7 @@ using System.Text;
 using OnRail;
 using OnRail.ResultDetails;
 
-namespace Quera.Helpers;
+namespace ReadmeGenerator.Helpers;
 
 public static class ResultHelpers {
     public static string ToStr(this Result result) {

@@ -1,38 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using OnRail;
 using OnRail.Extensions.OnFail;
 using OnRail.Extensions.OnSuccess;
 using OnRail.Extensions.SelectResults;
 using OnRail.Extensions.Try;
-using Quera.Cache;
-using Quera.Collector.Models;
-using Quera.Configs;
-using Quera.Helpers;
-using Serilog;
+using ReadmeGenerator.Cache;
+using ReadmeGenerator.Collector.Models;
+using ReadmeGenerator.Helpers;
+using ReadmeGenerator.Settings;
 
-namespace Quera.Collector;
+namespace ReadmeGenerator.Collector;
 
-public class CollectorService(AppSettings settings, CacheRepository cache) {
+public class CollectorService(AppSettings settings, CacheRepository cache, ILogger<CollectorService> logger) {
     public Task<Result<List<Problem>>> CollectProblemsFromDiskAsync() =>
         GitHelper.MakeDirectorySafe(".")
-            .OnSuccessTee(result => Log.Debug("{result}", result))
+            .OnSuccessTee(result => logger.LogDebug("{result}", result))
             .OnSuccess(() => Directory.GetDirectories(settings.SolutionsPath))
-            .OnSuccessTee(problemDirs => Log.Debug("{Count} problems found.", problemDirs.Length))
+            .OnSuccessTee(problemDirs => logger.LogDebug("{Count} problems found.", problemDirs.Length))
             .OnSuccess(problemDirs => problemDirs.SelectResults(CollectProblemAsync))
-            .OnSuccessTee(problems => Log.Debug("{Count} problems and solutions collected from hard.", problems.Count))
+            .OnSuccessTee(problems =>
+                logger.LogDebug("{Count} problems and solutions collected from hard.", problems.Count))
             .OnSuccess(cache.Join)
-            .OnSuccessTee(() => Log.Debug("Data joined with cache data."));
+            .OnSuccessTee(() => logger.LogDebug("Data joined with cache data."));
 
     private Task<Result<Problem?>> CollectProblemAsync(string problemDir) =>
         GetValidSolutionDirs(problemDir, settings.IgnoreSolutions, settings.NumberOfTry)
             .OnSuccess(CollectSolutionsAsync)
             .OnSuccess(async solutions => {
                 if (solutions.Count == 0) {
-                    Log.Debug("'{problemDir}' has not any valid solutions so skip it.", problemDir);
+                    logger.LogDebug("'{problemDir}' has not any valid solutions so skip it.", problemDir);
                     return Result<Problem?>.Ok(null);
                 }
 
@@ -68,17 +64,17 @@ public class CollectorService(AppSettings settings, CacheRepository cache) {
             var user = settings.Users.SingleOrDefault(user =>
                 string.Equals(user.Email, contributor.Email, StringComparison.CurrentCultureIgnoreCase));
             if (user is null) {
-                Log.Debug("User config not found for {email}", contributor.Email);
+                logger.LogDebug("User config not found for {email}", contributor.Email);
 
                 // Use the Gravatar image as default user profile
                 contributor.AvatarUrl = await GravatarHelper.GetGravatarUrlAsync(contributor.Email);
-                Log.Debug("The gravatar url was set for this user profile: {url}", contributor.AvatarUrl);
+                logger.LogDebug("The gravatar url was set for this user profile: {url}", contributor.AvatarUrl);
 
                 return contributor;
             }
 
             if (user.Ignore) {
-                Log.Debug("'{email}' contributor ignored base configs.", contributor.Email);
+                logger.LogDebug("'{email}' contributor ignored base configs.", contributor.Email);
                 return null;
             }
 
