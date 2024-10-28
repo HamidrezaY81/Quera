@@ -8,7 +8,7 @@
       - ../.git:/app/data/.git
       - ../Solutions:/app/data/Solutions
       - ./ReadmeGenerator/appsettings.json:/app/appsettings.json
-      - ./ReadmeGenerator/data/cache.db:/app/data/cache.db
+      - ./ReadmeGenerator/data/cache.db:/app/cache.db
       - ../README.md:/app/data/README.md:rw
       - ./ReadmeGenerator/data/ReadmeTemplate.md:/app/data/ReadmeTemplate.md
       - ../docs/CompleteList.md:/app/data/CompleteList.md:rw

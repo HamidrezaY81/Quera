@@ -29,6 +29,8 @@ public class AppRunner(
         if (!EnsureInputsAreValid(out var validationResult))
             return validationResult;
         logger.LogDebug("App setting values checked.");
+        
+        Directory.SetCurrentDirectory(settings.WorkingDirectory);
 
         // Collect problems and solutions
         var problemsResult = await collector.CollectProblemsFromDiskAsync();
