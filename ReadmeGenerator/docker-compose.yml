@@ -13,5 +13,5 @@
       - ./ReadmeGenerator/data/ReadmeTemplate.md:/app/data/ReadmeTemplate.md
       - ../docs/CompleteList.md:/app/data/CompleteList.md:rw
       - ./ReadmeGenerator/data/CompleteListTemplate.md:/app/data/CompleteListTemplate.md:rw
-    entrypoint: ["dotnet", "Quera.dll"]
+    entrypoint: ["dotnet", "ReadmeGenerator.dll"]
     # command: ["-w", "Data/"]
