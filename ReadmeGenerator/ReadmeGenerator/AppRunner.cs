@@ -106,6 +106,15 @@ public class AppRunner(
             return false;
         }
 
+        var usersWithoutPrimaryEmail = settings.Users.Count(user => string.IsNullOrWhiteSpace(user.PrimaryEmail));
+        if (usersWithoutPrimaryEmail > 0) {
+            result = Result.Fail(new ValidationError(
+                message:
+                $"{nameof(UserModel.PrimaryEmail)} is required for users in app settings. {usersWithoutPrimaryEmail} users have not the {nameof(UserModel.PrimaryEmail)}")
+            );
+            return false;
+        }
+
         result = Result.Ok();
         return true;
     }
