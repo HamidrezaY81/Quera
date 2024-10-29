@@ -13,14 +13,17 @@ using ReadmeGenerator.Settings;
 
 var services = new ServiceCollection();
 
-// Add logging
-services.AddLogging(builder => builder.AddConsole());
-
 // Add configuration
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 services.AddSingleton<IConfiguration>(configuration);
+
+// Add logging using configuration
+services.AddLogging(builder => {
+    builder.AddConfiguration(configuration.GetSection("Logging")); // Bind to "Logging" section
+    builder.AddConsole();
+});
 
 var appSettings = configuration.GetSection("App")
     .Get<AppSettings>() ?? throw new ArgumentException("Can not load app settings data.");
