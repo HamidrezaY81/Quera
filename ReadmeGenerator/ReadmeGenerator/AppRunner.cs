@@ -23,11 +23,11 @@ public class AppRunner(
     public async Task<Result> RunAsync() {
         Utility.SetWorkingDirectory(settings.WorkingDirectory);
 
-        await ConfigUserSettings();
-
         if (!EnsureInputsAreValid(out var validationResult))
             return validationResult;
         logger.LogDebug("App setting values checked.");
+
+        await ConfigUserSettings();
 
         // Collect problems and solutions
         var problemsResult = await collector.CollectProblemsFromDiskAsync();
@@ -61,13 +61,8 @@ public class AppRunner(
 
     private async Task ConfigUserSettings() {
         foreach (var user in settings.Users.Where(user => string.IsNullOrWhiteSpace(user.AvatarUrl))) {
-            // Use the Gravatar image as default user profile
-            user.AvatarUrl = await GravatarHelper.GetGravatarUrlAsync(
-                [user.PrimaryEmail, ..user.AliasEmails]);
-
-            // Use default user image if need
-            if (string.IsNullOrWhiteSpace(user.AvatarUrl))
-                user.AvatarUrl = settings.DefaultUserProfile;
+            user.AvatarUrl =
+                await Utility.GetDefaultImageAsync(user.PrimaryEmail, user.AliasEmails, settings.DefaultUserProfile!);
         }
     }
 
@@ -115,6 +110,13 @@ public class AppRunner(
             result = Result.Fail(new ValidationError(
                 message:
                 $"{nameof(UserModel.PrimaryEmail)} is required for users in app settings. {usersWithoutPrimaryEmail} users have not the {nameof(UserModel.PrimaryEmail)}")
+            );
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(settings.DefaultUserProfile)) {
+            result = Result.Fail(new ValidationError(
+                message: $"'{nameof(settings.DefaultUserProfile)}' can not be null or empty.")
             );
             return false;
         }
