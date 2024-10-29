@@ -53,7 +53,7 @@ Number of solutions: **359**
     <td>گل یا پوچ ساده</td>
     <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/253399/python3">python3</a></td>
     <td>29-10-2024</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="" title="1 commits"><img src="" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/ARiYaNSEp0-0" title="1 commits"><img src="https://avatars.githubusercontent.com/u/157750903?v=4" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr>
     <td><a href="https://quera.org/problemset/102248/">102248</a></td>
