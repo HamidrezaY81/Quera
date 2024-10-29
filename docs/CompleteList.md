@@ -2,9 +2,9 @@
 
 Go to [main page](../README.md).
 
-Number of problems solved: **182**
+Number of problems solved: **183**
 
-Number of solutions: **358**
+Number of solutions: **359**
 
 <table>
   <tr>
@@ -13,6 +13,13 @@ Number of solutions: **358**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr>
+    <td><a href="https://quera.org/problemset/253399/">253399</a></td>
+    <td>گل یا پوچ ساده</td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/253399/python3">python3</a></td>
+    <td>29-10-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="" title="1 commits"><img src="" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr>
     <td><a href="https://quera.org/problemset/102248/">102248</a></td>
