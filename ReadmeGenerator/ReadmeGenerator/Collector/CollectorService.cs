@@ -26,20 +26,23 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
     private Task<Result<Problem?>> CollectProblemAsync(string problemDir) =>
         TryExtensions.Try(() => Utility.GetValidFolders(problemDir, settings.IgnoreFolders))
             .OnSuccess(CollectSolutionsAsync)
-            .OnSuccess(async solutions => {
-                if (solutions.Count == 0) {
-                    logger.LogDebug("'{problemDir}' has not any valid solutions so skip it.", problemDir);
-                    return Result<Problem?>.Ok(null);
-                }
+            .OnSuccess(solutions => CollectProblemDataAsync(problemDir, solutions))
+            .OnFailAddMoreDetails(new { problemDir });
 
-                var queraId = new FileInfo(problemDir).Name;
+    private async Task<Result<Problem?>> CollectProblemDataAsync(string problemDir, List<Solution> solutions) {
+        if (solutions.Count == 0) {
+            logger.LogDebug("'{problemDir}' has not any valid solutions so skip it.", problemDir);
+            return Result<Problem?>.Ok(null);
+        }
 
-                return await GitHelper.GetLastCommitDateAsync(problemDir)
-                    .OnSuccess(lastCommitDate => CollectContributorsAsync(problemDir)
-                        .OnSuccess(contributors =>
-                            Result<Problem?>.Ok(CreateProblemObj(queraId, lastCommitDate, solutions, contributors))
-                        ));
-            }).OnFailAddMoreDetails(new { problemDir });
+        var queraId = new FileInfo(problemDir).Name;
+
+        return await GitHelper.GetLastCommitDateAsync(problemDir)
+            .OnSuccess(lastCommitDate => CollectContributorsAsync(problemDir)
+                .OnSuccess(contributors =>
+                    Result<Problem?>.Ok(CreateProblemObj(queraId, lastCommitDate, solutions, contributors))
+                ));
+    }
 
     private static Problem CreateProblemObj(string queraId, DateTime lastCommitDate, List<Solution> solutions,
         List<Contributor> contributors) {
@@ -79,7 +82,7 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
                 // Use the Gravatar image as default user profile
                 contributor.AvatarUrl =
                     await Utility.GetDefaultImageAsync(contributor.Email, [], settings.DefaultUserProfile!);
-                
+
                 // Cache data in memory
                 settings.Users.Add(new UserModel {
                     PrimaryEmail = contributor.Email,
