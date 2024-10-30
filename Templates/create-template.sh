@@ -104,6 +104,32 @@ file_type=$(file --mime-type -b "$file")
   esac
 }
 
+download_file() {
+    local url="$1"
+    local output_dir="$2"
+    local output_path
+
+    # Ensure the output directory exists
+    mkdir -p "$output_dir"
+
+    # Extract the filename from the URL
+    local filename
+    filename=$(basename "$url")
+
+    # Download the file using wget
+    output_path="${output_dir}/${filename}"
+    wget -q -O "$output_path" "$url"
+    code="$?"
+
+    # Check if the download was successful
+    if [[ $code -eq 0 ]]; then
+        echo "$output_path"
+    else
+        echo "Error: Download failed with code $code" >&2
+    fi
+    return $code
+}
+
 #===========================================================
 # Parse Command-Line Options
 while [[ $# -gt 0 ]]; do
@@ -178,12 +204,16 @@ fi
 # Download base project (optional)
 if [ -n "$download_link" ]; then
   echo "Downloading..."
-  output_file=$(curl -L -o "$download_link" "$target_solution_dir" 2>&1)
-  warn_if_failed "$?" "Failed to download project from $download_link"
-fi
+  output_file=$(download_file "$download_link" "$target_solution_dir")
+  if [ "$?" -eq 0 ]; then
+    echo "The file downloaded into $output_file"
 
-# Unzip base project if it's a ZIP file
-decompress_if_need "$output_file" "$target_solution_dir"
+    # Unzip the project if it's a ZIP file
+    decompress_if_need "$output_file" "$target_solution_dir"
+  else
+    echo "Failed to download project from $download_link"
+  fi
+fi
 
 echo "Directory is ready: $target_solution_dir"
 
