@@ -850,7 +850,7 @@ Number of solutions: **361**
   <tr>
     <td><a href="https://quera.org/problemset/18850/">18850</a></td>
     <td>جدول‌بازی</td>
-    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/18850/web/README.md">web</a></td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/18850/web">web</a></td>
     <td>05-09-2022</td>
     <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
