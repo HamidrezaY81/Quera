@@ -109,7 +109,7 @@ public class AppRunner(
         if (usersWithoutPrimaryEmail > 0) {
             result = Result.Fail(new ValidationError(
                 message:
-                $"{nameof(UserModel.PrimaryEmail)} is required for users in app settings. {usersWithoutPrimaryEmail} users have not the {nameof(UserModel.PrimaryEmail)}")
+                $"{nameof(UserSetting.PrimaryEmail)} is required for users in app settings. {usersWithoutPrimaryEmail} users have not the {nameof(UserSetting.PrimaryEmail)}")
             );
             return false;
         }

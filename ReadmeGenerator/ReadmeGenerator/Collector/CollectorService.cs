@@ -84,7 +84,7 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
                     await Utility.GetDefaultImageAsync(contributor.Email, [], settings.DefaultUserProfile!);
 
                 // Cache data in memory
-                settings.Users.Add(new UserModel {
+                settings.Users.Add(new UserSetting {
                     PrimaryEmail = contributor.Email,
                     AvatarUrl = contributor.AvatarUrl,
                 });
@@ -105,7 +105,7 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
         });
     }
 
-    private static UserModel? FindUser(string contributorEmail, IEnumerable<UserModel> settingsUsers) {
+    private static UserSetting? FindUser(string contributorEmail, IEnumerable<UserSetting> settingsUsers) {
         return settingsUsers.SingleOrDefault(user => {
             return IsEmailEqual(contributorEmail, user.PrimaryEmail)
                    || user.AliasEmails.Any(aliasEmail => IsEmailEqual(aliasEmail, contributorEmail));

@@ -15,7 +15,7 @@ public class AppSettings {
     public string WorkingDirectory { get; set; } = default!;
     public string SolutionsPath { get; set; } = default!;
 
-    public List<UserModel> Users { get; init; } = [];
+    public List<UserSetting> Users { get; init; } = [];
     public string LogLevel { get; set; } = default!;
     public int MainPageLimit { get; set; }
     public string? MainPageFooter { get; set; }

@@ -39,8 +39,8 @@ public class GeneratorService(AppSettings settings) {
             .AppendLine("  </tr>");
 
         foreach (var problem in problems) {
-            var result = AppendProblemData(readme, problem, settings.SolutionUrlFormat, settings.ProblemUrlFormat);
-            result.OnFailThrowException();
+            AppendProblemData(readme, problem, settings.SolutionUrlFormat, settings.ProblemUrlFormat)
+                .OnFailThrowException();
         }
 
         readme.AppendLine("</table>");
@@ -51,27 +51,13 @@ public class GeneratorService(AppSettings settings) {
     private static Result AppendProblemData(StringBuilder source,
         Problem problem, string solutionUrlFormat, string problemUrlFormat) =>
         TryExtensions.Try(() => {
-            var solutionLinks = problem.Solutions
-                .OrderByDescending(solution => solution.LastCommitDate)
-                .ThenBy(solution => solution.LanguageName)
-                .Select(solution => {
-                    var solutionUrl = GetSolutionUrl(problem, solutionUrlFormat, solution);
-
-                    return $"<a href=\"{solutionUrl}\">{new FileInfo(solution.LanguageName).Name}</a>";
-                });
-            var solutionsSection = string.Join(" - ", solutionLinks);
+            var solutionsSection = GenerateSolutionsSection(problem, solutionUrlFormat);
 
             var lastCommitFormatted = problem.LastSolutionsCommit.ToString("dd-MM-yyyy");
             var url = string.Format(problemUrlFormat, problem.QueraId);
-
-            var contributorLinks = problem.Contributors
-                .OrderByDescending(contributor => contributor.NumOfCommits)
-                .Select(contributor =>
-                    $"<a href=\"{contributor.ProfileUrl}\" title=\"{contributor.NumOfCommits} commits\"><img src=\"{contributor.AvatarUrl}\" alt=\"{contributor.Name}\" style=\"border-radius:100%\" width=\"32px\" height=\"32px\"></a>");
-            var contributorDiv =
-                $"<div style=\"display: flex; flex-direction: row; gap: 2px;\">{string.Join(" ", contributorLinks)}</div>";
-
             var questionLink = $"<a href=\"{url}\">{problem.QueraId}</a>";
+
+            var contributorDiv = GenerateContributorDiv(problem);
 
             source.AppendLine("  <tr>")
                 .AppendLine($"    <td>{questionLink}</td>")
@@ -81,6 +67,29 @@ public class GeneratorService(AppSettings settings) {
                 .AppendLine($"    <td>{contributorDiv}</td>")
                 .AppendLine("  </tr>");
         });
+
+    private static string GenerateContributorDiv(Problem problem) {
+        var contributorLinks = problem.Contributors
+            .OrderByDescending(contributor => contributor.NumOfCommits)
+            .Select(contributor =>
+                $"<a href=\"{contributor.ProfileUrl}\" title=\"{contributor.NumOfCommits} commits\"><img src=\"{contributor.AvatarUrl}\" alt=\"{contributor.Name}\" style=\"border-radius:100%\" width=\"32px\" height=\"32px\"></a>");
+        var contributorDiv =
+            $"<div style=\"display: flex; flex-direction: row; gap: 2px;\">{string.Join(" ", contributorLinks)}</div>";
+        return contributorDiv;
+    }
+
+    private static string GenerateSolutionsSection(Problem problem, string solutionUrlFormat) {
+        var solutionLinks = problem.Solutions
+            .OrderByDescending(solution => solution.LastCommitDate)
+            .ThenBy(solution => solution.LanguageName)
+            .Select(solution => {
+                var solutionUrl = GetSolutionUrl(problem, solutionUrlFormat, solution);
+
+                return $"<a href=\"{solutionUrl}\">{new FileInfo(solution.LanguageName).Name}</a>";
+            });
+        var solutionsSection = string.Join(" - ", solutionLinks);
+        return solutionsSection;
+    }
 
     private static string GetSolutionUrl(Problem problem, string solutionUrlFormat, Solution solution) {
         var solutionPath = Path.Combine(problem.QueraId.ToString(), solution.LanguageName);
