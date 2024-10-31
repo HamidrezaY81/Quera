@@ -130,6 +130,25 @@ download_file() {
     return $code
 }
 
+checkout_branch() {
+    local branch_name="$1"
+    
+    # Check if the branch name is provided
+    if [[ -z "$branch_name" ]]; then
+        echo "Error: No branch name provided."
+        return 1
+    fi
+
+    # Check if the branch exists
+    if git rev-parse --verify "$branch_name" &>/dev/null; then
+        echo "Switching to branch '$branch_name'..."
+        git checkout "$branch_name"
+    else
+        echo "Branch '$branch_name' does not exist. Creating it..."
+        git checkout -b "$branch_name"
+    fi
+}
+
 #===========================================================
 # Parse Command-Line Options
 while [[ $# -gt 0 ]]; do
@@ -188,7 +207,7 @@ fi
 #===========================================================
 
 # Checkout a new branch
-git checkout -b "$quera_id"
+checkout_branch "$quera_id"
 exit_if_failed "$?" "Unable to checkout to branch $quera_id"
 
 # Create solution directory
