@@ -51,20 +51,22 @@ public class GeneratorService(AppSettings settings) {
     private static Result AppendProblemData(StringBuilder source,
         Problem problem, string solutionUrlFormat, string problemUrlFormat) =>
         TryExtensions.Try(() => {
-            var solutionsSection = GenerateSolutionsSection(problem, solutionUrlFormat);
 
-            var lastCommitFormatted = problem.LastSolutionsCommit.ToString("dd-MM-yyyy");
+            var queraIdLink = $"<a href=\"#{problem.QueraId}\">{problem.QueraId}</a>";
+
             var url = string.Format(problemUrlFormat, problem.QueraId);
-            var questionLink = $"<a href=\"{url}\">{problem.QueraId}</a>";
+            var queraTitleLink = $"<a href=\"{url}\">{problem.QueraTitle}</a>";
+            
+            var solutionsSection = GenerateSolutionsSection(problem, solutionUrlFormat);
+            var lastCommitFormatted = problem.LastSolutionsCommit.ToString("dd-MM-yyyy");
+            var contributorsDiv = GenerateContributorDiv(problem);
 
-            var contributorDiv = GenerateContributorDiv(problem);
-
-            source.AppendLine("  <tr>")
-                .AppendLine($"    <td>{questionLink}</td>")
-                .AppendLine($"    <td>{problem.QueraTitle}</td>")
+            source.AppendLine($"  <tr id=\"{problem.QueraId}\">")
+                .AppendLine($"    <td>{queraIdLink}</td>")
+                .AppendLine($"    <td>{queraTitleLink}</td>")
                 .AppendLine($"    <td>{solutionsSection}</td>")
                 .AppendLine($"    <td>{lastCommitFormatted}</td>")
-                .AppendLine($"    <td>{contributorDiv}</td>")
+                .AppendLine($"    <td>{contributorsDiv}</td>")
                 .AppendLine("  </tr>");
         });
 
