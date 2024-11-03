@@ -2,9 +2,9 @@
 
 Go to [main page](../README.md).
 
-Number of problems solved: **186**
+Number of problems solved: **188**
 
-Number of solutions: **362**
+Number of solutions: **364**
 
 <table>
   <tr>
@@ -13,6 +13,20 @@ Number of solutions: **362**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr>
+    <td><a href="https://quera.org/problemset/169380/">169380</a></td>
+    <td>!Fall in Love</td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/169380/python3/app.py">python3</a></td>
+    <td>03-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/ARiYaNSEp0-0" title="1 commits"><img src="https://avatars.githubusercontent.com/u/157750903?v=4" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+  </tr>
+  <tr>
+    <td><a href="https://quera.org/problemset/255962/">255962</a></td>
+    <td>هویت گم‌گشته</td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/255962/javascript/app.js">javascript</a></td>
+    <td>03-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/ARiYaNSEp0-0" title="1 commits"><img src="https://avatars.githubusercontent.com/u/157750903?v=4" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr>
     <td><a href="https://quera.org/problemset/33488/">33488</a></td>
