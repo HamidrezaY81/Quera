@@ -22,6 +22,7 @@ public class AppSettings {
     public string CompleteListTemplatePath { get; set; } = default!;
     public string CompleteListOutputPath { get; set; } = default!;
     public string? DefaultUserProfile { get; set; }
+    public List<ProblemSetting> Problems { get; set; } = [];
 
 
     public override string ToString() {

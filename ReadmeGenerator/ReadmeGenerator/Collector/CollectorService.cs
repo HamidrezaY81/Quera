@@ -21,7 +21,21 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
             .OnSuccessTee(problems =>
                 logger.LogDebug("{Count} problems and solutions collected from hard.", problems.Count))
             .OnSuccess(cache.Join)
-            .OnSuccessTee(() => logger.LogDebug("Data joined with cache data."));
+            .OnSuccessTee(() => logger.LogDebug("Data joined with cache data."))
+            .OnSuccess(problems => {
+                foreach (var problem in problems) {
+                    var problemSetting =
+                        settings.Problems.Find(problemSetting => problemSetting.QueraId == problem.QueraId);
+                    if (problemSetting is null) continue;
+                    var settingContributors = problemSetting.Contributors.Select(c => new Contributor(c.UserName) {
+                        ProfileUrl = c.ProfileUrl,
+                        AvatarUrl = c.AvatarUrl
+                    });
+                    problem.Contributors.AddRange(settingContributors);
+                }
+
+                return problems;
+            });
 
     private Task<Result<Problem?>> CollectProblemAsync(string problemDir) =>
         TryExtensions.Try(() => Utility.GetValidFolders(problemDir, settings.IgnoreFolders))
@@ -63,11 +77,9 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
 
     private static List<Contributor> CombineDuplicateContributors(List<Contributor> contributorList) =>
         contributorList.GroupBy(c => c.Email)
-            .Select(g => new Contributor(
-                    g.First().Name,
-                    g.Key,
-                    g.Sum(c => c.NumOfCommits)
-                ) {
+            .Select(g => new Contributor(g.First().Name) {
+                    Email = g.Key,
+                    NumOfCommits = g.Sum(c => c.NumOfCommits),
                     AvatarUrl = g.First().AvatarUrl,
                     ProfileUrl = g.First().ProfileUrl
                 }
@@ -75,6 +87,8 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
 
     private Task<Result<List<Contributor?>>> JoinWithSettingsDataAsync(List<Contributor> contributors) {
         return contributors.SelectResults(async contributor => {
+            if (contributor.Email is null) return null!;
+
             var user = FindUser(contributor.Email, settings.Users);
             if (user is null) {
                 logger.LogWarning("User config not found for {email}", contributor.Email);

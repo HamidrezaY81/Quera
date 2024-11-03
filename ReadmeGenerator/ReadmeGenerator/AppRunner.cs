@@ -121,6 +121,18 @@ public class AppRunner(
             return false;
         }
 
+        if (settings.Problems.Any(problem => {
+                return problem.Contributors.Any(contributor =>
+                    string.IsNullOrWhiteSpace(contributor.UserName)
+                    || string.IsNullOrWhiteSpace(contributor.AvatarUrl)
+                    || string.IsNullOrWhiteSpace(contributor.ProfileUrl));
+            })) {
+            result = Result.Fail(new ValidationError(
+                message: $"'{nameof(settings.Problems)}' are not valid.")
+            );
+            return false;
+        }
+
         result = Result.Ok();
         return true;
     }
