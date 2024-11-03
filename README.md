@@ -38,7 +38,7 @@ See the complete list in [this page](docs/CompleteList.md).
 
 Number of problems solved: **188**
 
-Number of solutions: **364**
+Number of solutions: **365**
 
 <table>
   <tr>
@@ -47,6 +47,13 @@ Number of solutions: **364**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr>
+    <td><a href="https://quera.org/problemset/17245/">17245</a></td>
+    <td>تکسلنگ</td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/17245/python3/program.py">python3</a> - <a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/17245/csharp">csharp</a></td>
+    <td>03-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a> <a href="https://github.com/ahkazemi2007" title="ahkazemi2007"><img src="https://avatars.githubusercontent.com/u/71003262?v=4" alt="ahkazemi2007" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr>
     <td><a href="https://quera.org/problemset/169380/">169380</a></td>
@@ -739,13 +746,6 @@ Number of solutions: **364**
     <td>آزمون تستی</td>
     <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/148640/csharp">csharp</a></td>
     <td>20-11-2022</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
-  </tr>
-  <tr>
-    <td><a href="https://quera.org/problemset/4067/">4067</a></td>
-    <td>سراب</td>
-    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/4067/python3">python3</a> - <a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/4067/csharp">csharp</a></td>
-    <td>30-10-2022</td>
     <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
 </table>
