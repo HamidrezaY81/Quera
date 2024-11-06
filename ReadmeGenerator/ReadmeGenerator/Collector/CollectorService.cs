@@ -22,20 +22,22 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
                 logger.LogDebug("{Count} problems and solutions collected from hard.", problems.Count))
             .OnSuccess(cache.Join)
             .OnSuccessTee(() => logger.LogDebug("Data joined with cache data."))
-            .OnSuccess(problems => {
-                foreach (var problem in problems) {
-                    var problemSetting =
-                        settings.Problems.Find(problemSetting => problemSetting.QueraId == problem.QueraId);
-                    if (problemSetting is null) continue;
-                    var settingContributors = problemSetting.Contributors.Select(c => new Contributor(c.UserName) {
-                        ProfileUrl = c.ProfileUrl,
-                        AvatarUrl = c.AvatarUrl
-                    });
-                    problem.Contributors.AddRange(settingContributors);
-                }
+            .OnSuccess(ApplyProblemSettings);
 
-                return problems;
+    private List<Problem> ApplyProblemSettings(List<Problem> problems) {
+        foreach (var problem in problems) {
+            var problemSetting =
+                settings.Problems.Find(problemSetting => problemSetting.QueraId == problem.QueraId);
+            if (problemSetting is null) continue;
+            var settingContributors = problemSetting.Contributors.Select(c => new Contributor(c.UserName) {
+                ProfileUrl = c.ProfileUrl,
+                AvatarUrl = c.AvatarUrl
             });
+            problem.Contributors.AddRange(settingContributors);
+        }
+
+        return problems;
+    }
 
     private Task<Result<Problem?>> CollectProblemAsync(string problemDir) =>
         TryExtensions.Try(() => Utility.GetValidFolders(problemDir, settings.IgnoreFolders))
