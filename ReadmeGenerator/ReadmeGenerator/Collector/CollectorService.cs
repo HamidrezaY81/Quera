@@ -18,6 +18,7 @@ public class CollectorService(AppSettings settings, CacheRepository cache, ILogg
             .OnSuccess(() => Utility.GetValidFolders(settings.SolutionsPath, settings.IgnoreFolders))
             .OnSuccessTee(problemDirs => logger.LogDebug("{Count} problems found.", problemDirs.Count))
             .OnSuccess(problemDirs => problemDirs.SelectResults(CollectProblemAsync))
+            .OnSuccess( Utility.RemoveNullItems)
             .OnSuccessTee(problems =>
                 logger.LogDebug("{Count} problems and solutions collected from hard.", problems.Count))
             .OnSuccess(cache.Join)

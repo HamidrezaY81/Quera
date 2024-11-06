@@ -5,13 +5,12 @@ using ReadmeGenerator.Collector.Models;
 namespace ReadmeGenerator.Cache;
 
 public class CacheRepository(CacheDbContext db) {
-    public Result<List<Problem>> Join(List<Problem?> problems) =>
+    public Result<List<Problem>> Join(List<Problem> problems) =>
         TryExtensions.Try(() => {
             var query = from problem in problems
                 join cacheProblem in db.Problems on problem.QueraId.ToString() equals cacheProblem.Id
                     into g
                 from cacheProblem in g.DefaultIfEmpty()
-                where problem != null
                 select new Problem {
                     QueraId = problem.QueraId,
                     LastSolutionsCommit = problem.LastSolutionsCommit,
