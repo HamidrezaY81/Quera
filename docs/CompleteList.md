@@ -2,9 +2,9 @@
 
 Go to [main page](../README.md).
 
-Number of problems solved: **189**
+Number of problems solved: **190**
 
-Number of solutions: **366**
+Number of solutions: **367**
 
 <table>
   <tr>
@@ -13,6 +13,13 @@ Number of solutions: **366**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr id="170059">
+    <td><a href="#170059">170059</a></td>
+    <td><a href="https://quera.org/problemset/170059/">سی‌شارپ نوردی</a></td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/170059/csharp">csharp</a></td>
+    <td>07-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="43844">
     <td><a href="#43844">43844</a></td>
