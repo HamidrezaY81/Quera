@@ -36,9 +36,9 @@ See [this repository](https://github.com/HamidMolareza/LeetCode)
 
 See the complete list in [this page](docs/CompleteList.md).
 
-Number of problems solved: **189**
+Number of problems solved: **190**
 
-Number of solutions: **366**
+Number of solutions: **367**
 
 <table>
   <tr>
@@ -47,6 +47,13 @@ Number of solutions: **366**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr id="170059">
+    <td><a href="#170059">170059</a></td>
+    <td><a href="https://quera.org/problemset/170059/">سی‌شارپ نوردی</a></td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/170059/csharp">csharp</a></td>
+    <td>07-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="43844">
     <td><a href="#43844">43844</a></td>
@@ -740,13 +747,6 @@ Number of solutions: **366**
     <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/4066/c++/Source.cpp">c++</a> - <a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/4066/csharp">csharp</a></td>
     <td>23-11-2022</td>
     <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
-  </tr>
-  <tr id="148099">
-    <td><a href="#148099">148099</a></td>
-    <td><a href="https://quera.org/problemset/148099/">اعداد یکتا</a></td>
-    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/148099/csharp">csharp</a></td>
-    <td>22-11-2022</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="2 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
 </table>
 
