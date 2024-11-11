@@ -53,7 +53,7 @@ Number of solutions: **367**
     <td><a href="https://quera.org/problemset/170059/">سی‌شارپ نوردی</a></td>
     <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/170059/csharp">csharp</a></td>
     <td>07-11-2024</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="2 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="43844">
     <td><a href="#43844">43844</a></td>
