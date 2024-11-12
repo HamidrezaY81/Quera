@@ -1,0 +1,13 @@
+services:
+  app:
+    image: hamidmolareza/quera-readme-generator:latest
+    volumes:
+      - ../.git:/app/data/.git
+      - ../Solutions:/app/data/Solutions
+      - ./appsettings.json:/app/appsettings.json
+      - ./cache.db:/app/cache.db
+      - ../README.md:/app/data/README.md:rw
+      - ./ReadmeTemplate.md:/app/data/ReadmeTemplate.md
+      - ../docs/CompleteList.md:/app/data/CompleteList.md:rw
+      - ./CompleteListTemplate.md:/app/data/CompleteListTemplate.md:rw
+
