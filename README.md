@@ -48,6 +48,13 @@ Number of solutions: **367**
     <th>Last commit</th>
     <th>Contributors</th>
   </tr>
+  <tr id="134354">
+    <td><a href="#134354">134354</a></td>
+    <td><a href="https://quera.org/problemset/134354/">بشمار</a></td>
+    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/134354/javascript/main.js">javascript</a></td>
+    <td>11-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="2 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a> <a href="https://github.com/ARiYaNSEp0-0" title="1 commits"><img src="https://avatars.githubusercontent.com/u/157750903?v=4" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+  </tr>
   <tr id="170059">
     <td><a href="#170059">170059</a></td>
     <td><a href="https://quera.org/problemset/170059/">سی‌شارپ نوردی</a></td>
@@ -277,13 +284,6 @@ Number of solutions: **367**
     <td><a href="https://quera.org/problemset/171796/">Triangulum Number or rebmuN mulugnai</a></td>
     <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/171796/python3">python3</a></td>
     <td>14-03-2023</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
-  </tr>
-  <tr id="134354">
-    <td><a href="#134354">134354</a></td>
-    <td><a href="https://quera.org/problemset/134354/">بشمار</a></td>
-    <td><a href="https://github.com/HamidMolareza/QueraProblems/blob/master/Solutions/134354/javascript">javascript</a></td>
-    <td>29-01-2023</td>
     <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="3409">
