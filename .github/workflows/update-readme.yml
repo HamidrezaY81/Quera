@@ -5,10 +5,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'Solutions/**'
-      - '.github/workflows/update-readme.yml'
-      - 'ReadmeGenerator/**'
   workflow_dispatch:
 
 jobs:
@@ -30,14 +26,9 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PAT }}
           
-      - name: Build Docker images with Docker Compose
-        run: |
-          cd ReadmeGenerator
-          docker compose build
-
       - name: Run Docker Compose
         run: |
-          cd ReadmeGenerator
+          cd readme-generator-configs
           docker compose up --abort-on-container-exit
 
       - uses: stefanzweifel/git-auto-commit-action@v5
