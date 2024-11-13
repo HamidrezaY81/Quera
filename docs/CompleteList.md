@@ -2,9 +2,9 @@
 
 Go to [main page](../README.md).
 
-Number of problems solved: **190**
+Number of problems solved: **191**
 
-Number of solutions: **367**
+Number of solutions: **368**
 
 <table>
   <tr>
@@ -13,6 +13,13 @@ Number of solutions: **367**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr id="9774">
+    <td><a href="#9774">9774</a></td>
+    <td><a href="https://quera.org/problemset/9774/">عدد چاپ‌کن</a></td>
+    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/9774/python3/program.py">python3</a></td>
+    <td>13-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/ARiYaNSEp0-0" title="1 commits"><img src="https://avatars.githubusercontent.com/u/157750903?v=4" alt="ARiYaNSEp0-0" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="134354">
     <td><a href="#134354">134354</a></td>
