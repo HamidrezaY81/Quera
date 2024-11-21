@@ -11,3 +11,7 @@ body {
     width: 600px;
 }
 
+/*Solution*/
+td:empty {
+    background-color: #AEB6BF;
+}
