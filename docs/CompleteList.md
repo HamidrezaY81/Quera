@@ -2,9 +2,9 @@
 
 Go to [main page](../README.md).
 
-Number of problems solved: **192**
+Number of problems solved: **194**
 
-Number of solutions: **370**
+Number of solutions: **371**
 
 <table>
   <tr>
@@ -17,9 +17,23 @@ Number of solutions: **370**
   <tr id="15688">
     <td><a href="#15688">15688</a></td>
     <td><a href="https://quera.org/problemset/15688/">دوزیستان ناکام</a></td>
-    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/15688/images">images</a> - <a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/15688/stylesheets">stylesheets</a></td>
+    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/15688/front-end">front-end</a></td>
     <td>21-11-2024</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="2 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+  </tr>
+  <tr id="21220">
+    <td><a href="#21220">21220</a></td>
+    <td><a href="https://quera.org/problemset/21220/">خالی‌های رنگی</a></td>
+    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/21220/front-end">front-end</a></td>
+    <td>21-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
+  </tr>
+  <tr id="134351">
+    <td><a href="#134351">134351</a></td>
+    <td><a href="https://quera.org/problemset/134351/">رِنج قیمت مفید</a></td>
+    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/134351/front-end">front-end</a></td>
+    <td>21-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="3 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="9774">
     <td><a href="#9774">9774</a></td>
