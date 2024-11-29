@@ -2,9 +2,9 @@
 
 Go to [main page](../README.md).
 
-Number of problems solved: **195**
+Number of problems solved: **196**
 
-Number of solutions: **372**
+Number of solutions: **373**
 
 <table>
   <tr>
@@ -13,6 +13,13 @@ Number of solutions: **372**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr id="66548">
+    <td><a href="#66548">66548</a></td>
+    <td><a href="https://quera.org/problemset/66548/">محصولات</a></td>
+    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/66548/front-end">front-end</a></td>
+    <td>29-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="190993">
     <td><a href="#190993">190993</a></td>
