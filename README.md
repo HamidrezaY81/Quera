@@ -36,9 +36,9 @@ See [this repository](https://github.com/HamidMolareza/LeetCode)
 
 See the complete list in [this page](docs/CompleteList.md).
 
-Number of problems solved: **194**
+Number of problems solved: **195**
 
-Number of solutions: **371**
+Number of solutions: **372**
 
 <table>
   <tr>
@@ -47,6 +47,13 @@ Number of solutions: **371**
     <th>Solutions</th>
     <th>Last commit</th>
     <th>Contributors</th>
+  </tr>
+  <tr id="190993">
+    <td><a href="#190993">190993</a></td>
+    <td><a href="https://quera.org/problemset/190993/">دیتاست</a></td>
+    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/190993/python3">python3</a></td>
+    <td>29-11-2024</td>
+    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="1 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="HamidMolareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
   <tr id="15688">
     <td><a href="#15688">15688</a></td>
@@ -740,13 +747,6 @@ Number of solutions: **371**
     <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/6082/c++">c++</a> - <a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/6082/java/program.java">java</a> - <a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/6082/python3">python3</a></td>
     <td>25-11-2022</td>
     <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="4 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
-  </tr>
-  <tr id="8938">
-    <td><a href="#8938">8938</a></td>
-    <td><a href="https://quera.org/problemset/8938/">اسنپ در شکرستان</a></td>
-    <td><a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/8938/c++">c++</a> - <a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/8938/java/program.java">java</a> - <a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/8938/python3">python3</a> - <a href="https://github.com/HamidMolareza/Quera/blob/master/Solutions/8938/csharp">csharp</a></td>
-    <td>25-11-2022</td>
-    <td><div style="display: flex; flex-direction: row; gap: 2px;"><a href="https://github.com/HamidMolareza/" title="6 commits"><img src="https://avatars.githubusercontent.com/u/35568753?v=4" alt="Hamid Molareza" style="border-radius:100%" width="32px" height="32px"></a></div></td>
   </tr>
 </table>
 
